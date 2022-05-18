@@ -2,16 +2,14 @@
 from odoo import api, fields, models, SUPERUSER_ID, _
 
 
-class Picking(models.Model):
+class StockPicking(models.Model):
     _inherit = "stock.picking"
 
-    date_done = fields.Datetime('Date of Transfer', copy=False, readonly=True,
-                                states={'draft': [('readonly', False)], 'waiting': [('readonly', False)]},
-                                help="Date at which the transfer has been processed or cancelled.")
+    branch_id = fields.Many2one('res.branch', string='Branch')
 
-    def action_done(self):
-        for rec in self:
-            date = rec.date_done
-            res = super(Picking, rec).action_done()
-            rec.date_done = date
-            return res
+    @api.model
+    def create(self, vals):
+        if not vals.get('branch_id'):
+            vals.update({'branch_id': self.env['res.branch'].sudo().get_default_branch()})
+        picking = super(StockPicking, self).create(vals)
+        return picking
