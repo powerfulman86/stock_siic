@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_quantity_available_report_store_user,Full access on product quantity report to store User,model_product_quantity_available_report,stock.group_stock_user,1,1,1,1

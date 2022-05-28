@@ -10,12 +10,16 @@
     "category": "Product",
     "depends": ["product", "stock"],
     'data': [
+        'security/ir_rule.xml',
+        'security/ir.model.access.csv',
+        'views/stock_views.xml',
         'views/product_product.xml',
         'views/stock_inventory.xml',
         'views/stock_location.xml',
         'views/stock_move.xml',
         'views/stock_picking.xml',
         'views/stock_warehouse.xml',
+        'reports/product_quantity_available_report.xml'
     ],
     'images': ['static/description/icon.png'],
     'license': 'AGPL-3',

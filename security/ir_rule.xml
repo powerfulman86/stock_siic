@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="stock_report_personal_branch_rule" model="ir.rule">
+            <field name="name">Personal Branch stock</field>
+            <field name="model_id" ref="model_product_quantity_available_report"/>
+            <field name="domain_force">[('branch_id','=',user.branch_id.id)]</field>
+            <field name="groups" eval="[(4, ref('stock.group_stock_user'))]"/>
+        </record>
+
+        <record id="stock_report_branch_all_rule" model="ir.rule">
+            <field name="name">Branch stock report all</field>
+            <field name="model_id" ref="model_product_quantity_available_report"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('stock.group_stock_manager'))]"/>
+        </record>
+    </data>
+</odoo>
