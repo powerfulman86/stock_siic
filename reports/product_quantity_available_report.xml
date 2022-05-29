@@ -28,6 +28,7 @@
                 <pivot string="Product Quantity Available Report Each Location">
                     <field name="product_id" type="row"/>
                     <field name="branch_id" type="col"/>
+                    <field name="location_id" type="col"/>
                     <field name="qty_available" type="measure"/>
                 </pivot>
             </field>

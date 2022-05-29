@@ -1,0 +1,214 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_siic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-28 11:52+0000\n"
+"PO-Revision-Date: 2022-05-28 11:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_siic
+#: code:addons/stock_siic/models/stock_quant.py:0
+#, python-format
+msgid " lot '%s'"
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_product_category__allow_negative_stock
+#: model:ir.model.fields,field_description:stock_siic.field_product_product__allow_negative_stock
+#: model:ir.model.fields,field_description:stock_siic.field_product_template__allow_negative_stock
+#: model:ir.model.fields,field_description:stock_siic.field_stock_location__allow_negative_stock
+msgid "Allow Negative Stock"
+msgstr "السماح بالارصده السالبه"
+
+#. module: stock_siic
+#: model:ir.model.fields,help:stock_siic.field_product_category__allow_negative_stock
+msgid ""
+"Allow negative stock levels for the stockable products attached to this "
+"category. The options doesn't apply to products attached to sub-categories "
+"of this category."
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.model.fields,help:stock_siic.field_stock_location__allow_negative_stock
+msgid ""
+"Allow negative stock levels for the stockable products attached to this "
+"location."
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.ui.menu,name:stock_siic.menu_stock_inventory_analytic_report
+msgid "Analytic Report"
+msgstr "تقارير تحليليه"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_inventory__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_location__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_move__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_move_line__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_picking__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_picking_type__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_warehouse__branch_id
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
+#: model_terms:ir.ui.view,arch_db:stock_siic.view_picking_internal_search
+msgid "Branch"
+msgstr "المصنع"
+
+#. module: stock_siic
+#: model:ir.ui.menu,name:stock_siic.menu_product_quantity_available_report_action
+msgid "Branch Inventory"
+msgstr "ارصدة المصنع"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
+msgid "Category"
+msgstr "فئة الصنف"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.view_location_form
+msgid "Extra Information"
+msgstr "معلومات اضافيه"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
+msgid "Group By"
+msgstr "التجميع بواسطة"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__id
+msgid "ID"
+msgstr "الكود"
+
+#. module: stock_siic
+#: model:ir.model.fields,help:stock_siic.field_product_product__allow_negative_stock
+#: model:ir.model.fields,help:stock_siic.field_product_template__allow_negative_stock
+msgid ""
+"If this option is not active on this product nor on its product category and"
+" that this product is a stockable product, then the validation of the "
+"related stock moves will be blocked if the stock level becomes negative with"
+" the stock move."
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.model.constraint,message:stock_siic.constraint_product_product_default_code_uniq
+msgid "Internal Reference must be unique across the database!"
+msgstr "كود الصنف يجب ان يكون موحد على مستوى النظام"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_inventory
+msgid "Inventory"
+msgstr "الجرد"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_location
+msgid "Inventory Locations"
+msgstr "مواقع المخزون"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل في"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__location_id
+msgid "Location"
+msgstr "الموقع"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_location__location_address_id
+msgid "Location Address"
+msgstr "عنوان الموقع"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_picking_type
+msgid "Picking Type"
+msgstr "نوع الاستلام"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_product_product
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__product_id
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
+msgid "Product"
+msgstr "المنتج"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_product_category
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__category_id
+msgid "Product Category"
+msgstr "فئة المنتج"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "تحركات المنتج (بنود حركة المخزون)"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_product_quantity_available_report
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_graph
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_pivot
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
+msgid "Product Quantity Available Report Each Location"
+msgstr "كميات الاصناف المتاحه على مستوى المواقع"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: stock_siic
+#: model:ir.actions.act_window,name:stock_siic.product_quantity_available_report_action
+msgid "QOH Report"
+msgstr "تقرير الارصدة"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__qty_available
+msgid "Qty On Hand"
+msgstr "تقرير الارصدة"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_quant
+msgid "Quants"
+msgstr "الدفعات"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
+msgid "Stock Location"
+msgstr "موقع التخزين"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_move
+msgid "Stock Move"
+msgstr "حركة المخزون"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_picking
+msgid "Transfer"
+msgstr "الشحنة"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_warehouse
+msgid "Warehouse"
+msgstr "المخزن"
+
+#. module: stock_siic
+#: code:addons/stock_siic/models/stock_quant.py:0
+#, python-format
+msgid ""
+"You cannot validate this stock operation because the stock level of the "
+"product '%s'%s would become negative (%s) on the stock location '%s' and "
+"negative stock is not allowed for this product and/or location."
+msgstr ""
