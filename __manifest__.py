@@ -19,6 +19,7 @@
         'views/stock_move.xml',
         'views/stock_picking.xml',
         'views/stock_warehouse.xml',
+        'views/stock_quant.xml',
         'reports/product_quantity_available_report.xml'
     ],
     'images': ['static/description/icon.png'],

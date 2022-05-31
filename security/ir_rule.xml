@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!--stock picking type-->
+        <record id="stock_picking_type_personal_branch_rule" model="ir.rule">
+            <field name="name">Personal Branch stock picking type</field>
+            <field name="model_id" ref="model_stock_picking_type"/>
+            <field name="domain_force">[('branch_id','=',user.branch_id.id)]</field>
+            <field name="groups" eval="[(4, ref('stock.group_stock_user'))]"/>
+        </record>
+
+        <record id="stock_picking_type_branch_all_rule" model="ir.rule">
+            <field name="name">Branch stock picking type all</field>
+            <field name="model_id" ref="model_stock_picking_type"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('stock.group_stock_manager'))]"/>
+        </record>
+
+        <!--stock picking-->
+        <record id="stock_picking_personal_branch_rule" model="ir.rule">
+            <field name="name">Personal Branch stock picking</field>
+            <field name="model_id" ref="model_stock_picking"/>
+            <field name="domain_force">[('branch_id','=',user.branch_id.id)]</field>
+            <field name="groups" eval="[(4, ref('stock.group_stock_user'))]"/>
+        </record>
+
+        <record id="stock_picking_branch_all_rule" model="ir.rule">
+            <field name="name">Branch stock picking all</field>
+            <field name="model_id" ref="model_stock_picking"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('stock.group_stock_manager'))]"/>
+        </record>
+
+        <!--product quantity report authority-->
         <record id="stock_report_personal_branch_rule" model="ir.rule">
             <field name="name">Personal Branch stock</field>
             <field name="model_id" ref="model_product_quantity_available_report"/>
