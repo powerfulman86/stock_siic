@@ -10,6 +10,8 @@
     "category": "Product",
     "depends": ["product", "stock"],
     'data': [
+        'data/paper_format.xml',
+        'data/report_data.xml',
         'security/ir_rule.xml',
         'security/ir.model.access.csv',
         'views/stock_views.xml',
@@ -20,7 +22,9 @@
         'views/stock_picking.xml',
         'views/stock_warehouse.xml',
         'views/stock_quant.xml',
-        'reports/product_quantity_available_report.xml'
+        'reports/product_quantity_available_report.xml',
+        'reports/stock_card_report.xml',
+        'wizard/stock_card_report_wizard_view.xml',
     ],
     'images': ['static/description/icon.png'],
     'license': 'AGPL-3',

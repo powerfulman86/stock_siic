@@ -3,4 +3,4 @@
 
 from . import models
 from . import reports
-from .hook import pre_init_product_code
+from . import wizard

@@ -1,0 +1,132 @@
+<odoo>
+
+    <template id="assets_backend"
+              name="stock_card_report assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/stock_siic/static/src/css/report.css" rel="stylesheet"/>
+            <script type="text/javascript"
+                    src="/stock_siic/static/src/js/stock_card_report_backend.js"/>
+        </xpath>
+    </template>
+
+    <template id="report_buttons">
+        <div class="button_row">
+            <button class="o_stock_card_reports_print btn btn-sm oe_button"><span class="fa fa-print"/>Print
+            </button>
+            <button class="o_stock_card_reports_export btn btn-sm oe_button"><span class="fa fa-download"/>Export
+            </button>
+        </div>
+    </template>
+
+    <template id="report_stock_card_report_html">
+        <div class="o_stock_card_reports_page">
+            <t t-call="stock_siic.report_buttons"/>
+            <t t-call="stock_siic.report_stock_card_report_base"/>
+        </div>
+    </template>
+
+    <template id="stock_siic.report_stock_card_report_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <t t-call="stock_siic.report_stock_card_report_base"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="stock_siic.report_stock_card_report_base">
+        <t t-foreach="o.product_ids" t-as="product">
+            <div class="page">
+                <div class="row">
+                    <t t-set="title">Stock Card -
+                        <t t-raw="product.name"/>
+                    </t>
+                    <h4 class="mt0" t-esc="title" style="text-align: center;"/>
+                </div>
+                <!-- Display filters -->
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr style="text-align:center;vertical-align:middle;font-size: 15px;">
+                            <th>Branch</th>
+                            <th>Location</th>
+                            <th>Date From</th>
+                            <th>Date To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="text-align:center;vertical-align:middle;font-size: 15px;">
+                            <td>
+                                <span t-field="o.branch_id"/>
+                            </td>
+                            <td>
+                                <span t-field="o.location_id"/>
+                            </td>
+                            <td>
+                                <span t-field="o.date_from"/>
+                            </td>
+                            <td>
+                                <span t-field="o.date_to"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Display stock card table -->
+                <table class="table table-sm o_main_table table-bordered">
+                    <thead>
+                        <tr style="text-align:center;vertical-align:middle;font-size: 15px;">
+                            <th>Date</th>
+                            <th>Reference</th>
+                            <th>Origin</th>
+                            <th>Input</th>
+                            <th>Output</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="initial"
+                           t-value="o._get_initial(o.results.filtered(lambda l: l.product_id == product and l.is_initial))"/>
+                        <tr>
+                            <td></td>
+                            <td>Initial</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right">
+                                <t t-esc="'{0:,.3f}'.format(initial)"/>
+                            </td>
+                        </tr>
+                        <t t-set="product_balance" t-value="initial"/>
+                        <t t-foreach="o.results.filtered(lambda l: l.product_id == product and not l.is_initial)"
+                           t-as="product_line">
+                            <t t-set="product_balance"
+                               t-value="product_balance + product_line.product_in - product_line.product_out"/>
+                            <tr>
+                                <td>
+                                    <t t-esc="product_line.date.strftime('%Y-%m-%d')"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.reference"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.origin"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="'{0:,.3f}'.format(product_line.product_in)"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="'{0:,.3f}'.format(product_line.product_out)"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="'{0:,.3f}'.format(product_balance)" />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <p style="page-break-before:always;"></p>
+            </div>
+        </t>
+    </template>
+</odoo>
