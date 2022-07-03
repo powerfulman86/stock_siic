@@ -5,15 +5,17 @@ from odoo import api, fields, models, _
 class StockInventory(models.Model):
     _inherit = 'stock.inventory'
 
-    branch_id = fields.Many2one('res.branch', string='Branch')
-
     @api.model
-    def create(self, vals):
-        if vals.get('location_id', None):
-            location = self.env['stock.location'].browse(vals.get('location_id'))
-            if location and location.branch_id:
-                vals.update({'branch_id': location.branch_id.id})
-        if not vals.get('branch_id'):
-            vals.update({'branch_id': self.env['res.branch'].sudo().get_default_branch()})
-        inventory = super(StockInventory, self).create(vals)
-        return inventory
+    def _get_branch(self):
+        if self.env.user.branch_id:
+            return self.env.user.branch_id.id
+        else:
+            return self.env['res.branch'].search([], limit=1, order='id').id
+
+    branch_id = fields.Many2one('res.branch', string='Branch', default=_get_branch, required=True, )
+
+    location_ids = fields.Many2many(
+        'stock.location', string='Locations',
+        readonly=True, check_company=True,
+        states={'draft': [('readonly', False)]},
+        domain="[('company_id', '=', company_id), ('usage', 'in', ['internal', 'transit']),('branch_id', '=', branch_id)]")

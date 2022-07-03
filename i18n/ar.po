@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-28 11:52+0000\n"
-"PO-Revision-Date: 2022-05-28 11:52+0000\n"
+"POT-Creation-Date: 2022-06-26 15:55+0000\n"
+"PO-Revision-Date: 2022-06-26 15:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,21 @@ msgstr ""
 #: code:addons/stock_siic/models/stock_quant.py:0
 #, python-format
 msgid " lot '%s'"
+msgstr "رقم اللوط"
+
+#. module: stock_siic
+#: model:ir.actions.report,print_report_name:stock_siic.action_stock_card_report_pdf
+msgid "'Stock Card Report - [%s]' % object.location_id.display_name"
+msgstr "بطاقة صنف مخزنية"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_buttons
+msgid "<span class=\"fa fa-download\"/>Export"
+msgstr ""
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_buttons
+msgid "<span class=\"fa fa-print\"/>Print"
 msgstr ""
 
 #. module: stock_siic
@@ -50,16 +65,26 @@ msgid "Analytic Report"
 msgstr "تقارير تحليليه"
 
 #. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Balance"
+msgstr "الرصيد"
+
+#. module: stock_siic
 #: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__branch_id
 #: model:ir.model.fields,field_description:stock_siic.field_stock_inventory__branch_id
 #: model:ir.model.fields,field_description:stock_siic.field_stock_location__branch_id
 #: model:ir.model.fields,field_description:stock_siic.field_stock_move__branch_id
 #: model:ir.model.fields,field_description:stock_siic.field_stock_move_line__branch_id
 #: model:ir.model.fields,field_description:stock_siic.field_stock_picking__branch_id
 #: model:ir.model.fields,field_description:stock_siic.field_stock_picking_type__branch_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_quant__branch_id
 #: model:ir.model.fields,field_description:stock_siic.field_stock_warehouse__branch_id
 #: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
 #: model_terms:ir.ui.view,arch_db:stock_siic.view_picking_internal_search
+#: model_terms:ir.ui.view,arch_db:stock_siic.view_stock_quant_branch_search
 msgid "Branch"
 msgstr "المصنع"
 
@@ -69,13 +94,63 @@ msgid "Branch Inventory"
 msgstr "ارصدة المصنع"
 
 #. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.stock_card_report_wizard_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: stock_siic
 #: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
 msgid "Category"
 msgstr "فئة الصنف"
 
 #. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__create_uid
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__create_uid
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__create_uid
+msgid "Created by"
+msgstr "انشئ بواسطة"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__create_date
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__create_date
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__create_date
+msgid "Created on"
+msgstr "انشئ في"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__date
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__date_from
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Date From"
+msgstr "من تاريخ"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__date_to
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Date To"
+msgstr "الى تاريخ"
+
+#. module: stock_siic
 #: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__display_name
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__display_name
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__display_name
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__date_to
+msgid "End Date"
+msgstr "تاريخ النهايه"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.stock_card_report_wizard_form
+msgid "Export PDF"
 msgstr ""
 
 #. module: stock_siic
@@ -90,6 +165,9 @@ msgstr "التجميع بواسطة"
 
 #. module: stock_siic
 #: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__id
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__id
 msgid "ID"
 msgstr "الكود"
 
@@ -102,6 +180,16 @@ msgid ""
 "related stock moves will be blocked if the stock level becomes negative with"
 " the stock move."
 msgstr ""
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Initial"
+msgstr "الافتتاحي"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Input"
+msgstr "وارد"
 
 #. module: stock_siic
 #: model:ir.model.constraint,message:stock_siic.constraint_product_product_default_code_uniq
@@ -119,12 +207,38 @@ msgid "Inventory Locations"
 msgstr "مواقع المخزون"
 
 #. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__is_initial
+msgid "Is Initial"
+msgstr "افتتاحي"
+
+#. module: stock_siic
 #: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report____last_update
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report____last_update
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard____last_update
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view____last_update
 msgid "Last Modified on"
 msgstr "اخر تعديل في"
 
 #. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__write_uid
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__write_uid
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__write_uid
+msgid "Last Updated by"
+msgstr "اخر تحديث بواسطة"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__write_date
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__write_date
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__write_date
+msgid "Last Updated on"
+msgstr "اخر تحديث في"
+
+#. module: stock_siic
 #: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__location_id
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__location_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__location_id
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__location_id
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
 msgid "Location"
 msgstr "الموقع"
 
@@ -134,6 +248,22 @@ msgid "Location Address"
 msgstr "عنوان الموقع"
 
 #. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__location_dest_id
+msgid "Location Dest"
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__origin
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Origin"
+msgstr "المستند المصدر"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Output"
+msgstr "صادر"
+
+#. module: stock_siic
 #: model:ir.model,name:stock_siic.model_stock_picking_type
 msgid "Picking Type"
 msgstr "نوع الاستلام"
@@ -141,6 +271,8 @@ msgstr "نوع الاستلام"
 #. module: stock_siic
 #: model:ir.model,name:stock_siic.model_product_product
 #: model:ir.model.fields,field_description:stock_siic.field_product_quantity_available_report__product_id
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__product_ids
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__product_id
 #: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
 msgid "Product"
 msgstr "المنتج"
@@ -152,9 +284,24 @@ msgid "Product Category"
 msgstr "فئة المنتج"
 
 #. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__product_in
+msgid "Product In"
+msgstr "وارد الصنف"
+
+#. module: stock_siic
 #: model:ir.model,name:stock_siic.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr "تحركات المنتج (بنود حركة المخزون)"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__product_out
+msgid "Product Out"
+msgstr "منصرف الصنف"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__product_qty
+msgid "Product Qty"
+msgstr "كمية الصنف"
 
 #. module: stock_siic
 #: model:ir.model,name:stock_siic.model_product_quantity_available_report
@@ -168,6 +315,21 @@ msgstr "كميات الاصناف المتاحه على مستوى المواق�
 #: model:ir.model,name:stock_siic.model_product_template
 msgid "Product Template"
 msgstr "قالب المنتج"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__product_uom
+msgid "Product Uom"
+msgstr "وحدة القياس"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__product_uom_qty
+msgid "Product Uom Qty"
+msgstr "كمية وحدة القياس"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__product_ids
+msgid "Products"
+msgstr "الاصناف"
 
 #. module: stock_siic
 #: model:ir.actions.act_window,name:stock_siic.product_quantity_available_report_action
@@ -185,6 +347,54 @@ msgid "Quants"
 msgstr "الدفعات"
 
 #. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_view__reference
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Reference"
+msgstr "الرقم"
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_report_stock_card_report__results
+msgid "Results"
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.model.fields,field_description:stock_siic.field_stock_card_report_wizard__date_from
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: stock_siic
+#: model:ir.actions.act_window,name:stock_siic.stock_card_report_action
+#: model:ir.ui.menu,name:stock_siic.stock_card_report_menu
+msgid "Stock Card"
+msgstr "بطاقة صنف"
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.report_stock_card_report_base
+msgid "Stock Card -"
+msgstr "بطاقة صنف -"
+
+#. module: stock_siic
+#: model:ir.actions.report,name:stock_siic.action_stock_card_report_pdf
+msgid "Stock Card PDF"
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.actions.client,name:stock_siic.action_report_stock_card_report_html
+#: model:ir.model,name:stock_siic.model_report_stock_card_report
+msgid "Stock Card Report"
+msgstr "تقرير بطاقة الصنف"
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_card_report_wizard
+msgid "Stock Card Report Wizard"
+msgstr ""
+
+#. module: stock_siic
+#: model:ir.model,name:stock_siic.model_stock_card_view
+msgid "Stock Card View"
+msgstr ""
+
+#. module: stock_siic
 #: model_terms:ir.ui.view,arch_db:stock_siic.product_quantity_available_report_search
 msgid "Stock Location"
 msgstr "موقع التخزين"
@@ -195,9 +405,24 @@ msgid "Stock Move"
 msgstr "حركة المخزون"
 
 #. module: stock_siic
+#: model:ir.model.fields,help:stock_siic.field_stock_card_report_wizard__branch_id
+msgid "This is branch to set"
+msgstr "يجب تسجيل الفرع"
+
+#. module: stock_siic
 #: model:ir.model,name:stock_siic.model_stock_picking
 msgid "Transfer"
 msgstr "الشحنة"
+
+#. module: stock_siic
+#: model:ir.model.fields,help:stock_siic.field_report_stock_card_report__results
+msgid "Use compute fields, so there is nothing store in database"
+msgstr ""
+
+#. module: stock_siic
+#: model_terms:ir.ui.view,arch_db:stock_siic.stock_card_report_wizard_form
+msgid "View"
+msgstr ""
 
 #. module: stock_siic
 #: model:ir.model,name:stock_siic.model_stock_warehouse

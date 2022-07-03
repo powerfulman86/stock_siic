@@ -23,7 +23,7 @@
         'views/stock_warehouse.xml',
         'views/stock_quant.xml',
         'reports/product_quantity_available_report.xml',
-        'reports/stock_card_report.xml',
+        'templates/stock_card_report.xml',
         'wizard/stock_card_report_wizard_view.xml',
     ],
     'images': ['static/description/icon.png'],

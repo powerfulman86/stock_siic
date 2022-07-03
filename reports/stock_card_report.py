@@ -45,9 +45,7 @@ class StockCardReport(models.TransientModel):
         self.ensure_one()
         date_from = self.date_from or "0001-01-01"
         self.date_to = self.date_to or fields.Date.context_today(self)
-        locations = self.env["stock.location"].search(
-            [("id", "child_of", [self.location_id.id])]
-        )
+        locations = self.env["stock.location"].search([("id", "child_of", [self.location_id.id])])
         self._cr.execute(
             """
             SELECT move.date, 
