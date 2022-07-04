@@ -12,7 +12,8 @@ class StockInventory(models.Model):
         else:
             return self.env['res.branch'].search([], limit=1, order='id').id
 
-    branch_id = fields.Many2one('res.branch', string='Branch', default=_get_branch, required=True, )
+    branch_id = fields.Many2one('res.branch', string='Branch', default=_get_branch, required=True,
+                                states={'draft': [('readonly', False)]})
 
     location_ids = fields.Many2many(
         'stock.location', string='Locations',
