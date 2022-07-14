@@ -12,6 +12,7 @@
     'data': [
         'data/paper_format.xml',
         'data/report_data.xml',
+        'data/stock_data.xml',
         'security/ir_rule.xml',
         'security/ir.model.access.csv',
         'views/stock_views.xml',

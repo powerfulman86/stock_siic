@@ -7,8 +7,15 @@
             <field name="inherit_id" ref="stock.view_inventory_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='location_ids']" position="before">
-                   <field name="branch_id" options="{'no_create': True}"/>
-               </xpath>
+                    <field name="branch_id" options="{'no_create': True}"/>
+                </xpath>
+
+                <sheet position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
             </field>
         </record>
 
@@ -18,8 +25,8 @@
             <field name="inherit_id" ref="stock.view_inventory_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='date']" position="before">
-                   <field name="branch_id" options="{'no_create': True}"/>
-               </xpath>
+                    <field name="branch_id" options="{'no_create': True}"/>
+                </xpath>
             </field>
         </record>
     </data>
