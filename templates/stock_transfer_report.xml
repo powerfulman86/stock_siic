@@ -37,8 +37,9 @@
     <template id="stock_siic.report_stock_transfer_report_base">
         <t t-foreach="o.product_ids" t-as="product">
             <div class="page">
+                <div class="oe_structure"/>
                 <div class="row">
-                    <t t-set="title">Stock Transfer -
+                    <t t-set="title">Store Product Move -
                         <t t-raw="product.display_name"/>
                     </t>
                     <h4 class="mt0" t-esc="title" style="text-align: center;"/>
