@@ -1,0 +1,123 @@
+<odoo>
+
+    <template id="assets_backend_transfer" name="stock_transfer_report assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/stock_siic/static/src/css/report.css" rel="stylesheet"/>
+            <script type="text/javascript"
+                    src="/stock_siic/static/src/js/stock_transfer_report_backend.js"/>
+        </xpath>
+    </template>
+
+    <template id="transfer_report_buttons">
+        <div class="button_row">
+            <button class="o_stock_transfer_reports_print btn btn-sm oe_button"><span class="fa fa-print"/>Print
+            </button>
+            <button class="o_stock_transfer_reports_export btn btn-sm oe_button"><span class="fa fa-download"/>Export
+            </button>
+        </div>
+    </template>
+
+    <template id="report_stock_transfer_report_html">
+        <div class="o_stock_transfer_reports_page">
+            <t t-call="stock_siic.transfer_report_buttons"/>
+            <t t-call="stock_siic.report_stock_transfer_report_base"/>
+        </div>
+    </template>
+
+    <template id="stock_siic.report_stock_transfer_report_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <t t-call="stock_siic.report_stock_transfer_report_base"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="stock_siic.report_stock_transfer_report_base">
+        <t t-foreach="o.product_ids" t-as="product">
+            <div class="page">
+                <div class="row">
+                    <t t-set="title">Stock Transfer -
+                        <t t-raw="product.display_name"/>
+                    </t>
+                    <h4 class="mt0" t-esc="title" style="text-align: center;"/>
+                </div>
+                <!-- Display filters -->
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr style="text-align:center;vertical-align:middle;font-size: 15px;">
+                            <th>Branch</th>
+                            <th>Location</th>
+                            <th>Operation</th>
+                            <th>Date From</th>
+                            <th>Date To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="text-align:center;vertical-align:middle;font-size: 15px;">
+                            <td>
+                                <span t-field="o.branch_id"/>
+                            </td>
+                            <td>
+                                <span t-field="o.location_id"/>
+                            </td>
+                            <td>
+                                <span t-field="o.code"/>
+                            </td>
+                            <td>
+                                <span t-field="o.date_from"/>
+                            </td>
+                            <td>
+                                <span t-field="o.date_to"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Display stock card table -->
+                <table class="table table-sm o_main_table table-bordered">
+                    <thead>
+                        <tr style="text-align:center;vertical-align:middle;font-size: 15px;">
+                            <th style="width:12%">Date</th>
+                            <th style="width:20%">Reference</th>
+                            <th style="width:18%">Source</th>
+                            <th style="width:18%">Destination</th>
+                            <th style="width:10%">Qty</th>
+                            <th style="width:9%">UOM</th>
+                            <th style="width:13%">State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="o.results.filtered(lambda l: l.product_id == product)" t-as="product_line">
+                            <tr>
+                                <td>
+                                    <t t-esc="product_line.date"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.reference"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.location_id.complete_name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.location_dest_id.complete_name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.product_qty"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.product_uom.name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="product_line.state"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <p style="page-break-before:always;"></p>
+            </div>
+        </t>
+    </template>
+</odoo>

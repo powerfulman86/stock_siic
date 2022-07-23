@@ -4,9 +4,9 @@ from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
 
 
-class StockCardReportWizard(models.TransientModel):
-    _name = "stock.card.report.wizard"
-    _description = "Stock Card Report Wizard"
+class StockTransferReportWizard(models.TransientModel):
+    _name = "stock.transfer.report.wizard"
+    _description = "Stock Transfer Report Wizard"
 
     @api.model
     def _get_branch(self):
@@ -23,15 +23,21 @@ class StockCardReportWizard(models.TransientModel):
     location_id = fields.Many2one(comodel_name="stock.location", string="Location", required=True,
                                   domain="[('usage', '=', 'internal'),'|',('branch_id','=',branch_id),('branch_id','=',False)]", )
 
+    code = fields.Selection([('incoming', 'Receipt'),
+                             ('outgoing', 'Delivery'),
+                             ('internal', 'Internal Transfer'),
+                             ('mrp_operation', 'Manufacturing')],
+                            'Type of Operation', required=True)
+
     def button_export_html(self):
         self.ensure_one()
-        action = self.env.ref("stock_siic.action_report_stock_card_report_html")
+        action = self.env.ref("stock_siic.action_report_stock_transfer_report_html")
         vals = action.read()[0]
         context = vals.get("context", {})
         if context:
             context = safe_eval(context)
-        model = self.env["report.stock.card.report"]
-        report = model.create(self._prepare_stock_card_report())
+        model = self.env["report.stock.transfer.report"]
+        report = model.create(self._prepare_stock_transfer_report())
         context["active_id"] = report.id
         context["active_ids"] = report.ids
         vals["context"] = context
@@ -47,7 +53,7 @@ class StockCardReportWizard(models.TransientModel):
     #     report_type = "xlsx"
     #     return self._export(report_type)
 
-    def _prepare_stock_card_report(self):
+    def _prepare_stock_transfer_report(self):
         self.ensure_one()
         return {
             "date_from": self.date_from,
@@ -55,9 +61,10 @@ class StockCardReportWizard(models.TransientModel):
             "product_ids": [(6, 0, self.product_ids.ids)],
             "location_id": self.location_id.id,
             "branch_id": self.branch_id.id,
+            "code": self.code,
         }
 
     def _export(self, report_type):
-        model = self.env["report.stock.card.report"]
-        report = model.create(self._prepare_stock_card_report())
+        model = self.env["report.stock.transfer.report"]
+        report = model.create(self._prepare_stock_transfer_report())
         return report.print_report(report_type)

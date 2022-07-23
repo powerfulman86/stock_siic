@@ -6,21 +6,26 @@
         <field name="context" eval="{'active_model': 'report.stock.card.report'}" />
     </record>
 
+    <record id="action_report_stock_transfer_report_html" model="ir.actions.client">
+        <field name="name">Store Product Move</field>
+        <field name="tag">stock_transfer_report_backend</field>
+        <field name="context" eval="{'active_model': 'report.stock.transfer.report'}" />
+    </record>
+
     <report string="Stock Card PDF"
             id="action_stock_card_report_pdf"
             model="report.stock.card.report"
             name="stock_siic.report_stock_card_report_pdf"
             file="stock_siic.report_stock_card_report_pdf"
             report_type="qweb-pdf"
-            print_report_name="'Stock Card Report - [%s]' % object.location_id.display_name"
             paperformat="stock_siic.paperformat_stock_card"/>
 
-<!--    <report string="Stock Card XLSX"-->
-<!--            id="action_stock_card_report_xlsx"-->
-<!--            model="report.stock.card.report"-->
-<!--            name="stock_siic.report_stock_card_report_xlsx"-->
-<!--            file="Stock Card Report"-->
-<!--            report_type="xlsx"-->
-<!--            attachment_use="False"/>-->
+    <report string="Store Product Move"
+            id="action_stock_transfer_report_pdf"
+            model="report.stock.transfer.report"
+            name="stock_siic.report_stock_transfer_report_pdf"
+            file="stock_siic.report_stock_transfer_report_pdf"
+            report_type="qweb-pdf"
+            paperformat="stock_siic.paperformat_landscape_siic"/>
 
 </odoo>
